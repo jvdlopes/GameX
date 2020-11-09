@@ -26,6 +26,18 @@ public class Astroid {
         }
     }
     
+    public Rectangle getHitBox(){
+        return hitbox;
+    }
+    
+    public void setChosen(){
+        isChosen=true;
+    }
+    
+    public boolean isChosen(){
+        return isChosen;
+    }
+    
     public static void setGameSize(int x, int y){
         GAME_HEIGHT=y;
         GAME_WIDTH=x;
@@ -41,8 +53,8 @@ public class Astroid {
         hitbox.setY(hitbox.getY() + ydir);
         
         //bounce when we hit a side
-        if(hitbox.getX() <= 0 || hitbox.getX() > GAME_WIDTH) xdir=-xdir;
-        if(hitbox.getY() <= 0 || hitbox.getY() > GAME_WIDTH) ydir=-ydir;
+        if(hitbox.getX() <= 0 || hitbox.getX() > GAME_WIDTH - image.getWidth()) xdir=-xdir;
+        if(hitbox.getY() <= 40 || hitbox.getY() > GAME_HEIGHT - image.getHeight()) ydir=-ydir;
     }
     
     public void draw(){
